@@ -72,6 +72,7 @@ async function renderData() {
 
     apiDataResponseStartFrom2ndItem.forEach(item => {
         const cardTemplate = `
+        <a href="${item.url}" target="_blank">
         <div class="relative h-48 w-full  hover:scale-90 transition duration-500 cursor-pointer object-cover">
         <img src="${item.image_url}" alt="${item.title}" class="absolute rounded-md h-full w-full object-cover ">
         <div class="absolute bottom-0 left-0 p-2 rounded-md">
@@ -83,6 +84,7 @@ async function renderData() {
           </div>
         </div>
       </div>
+      </a>
         `;
         cardHTML += cardTemplate;
     });
