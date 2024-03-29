@@ -20,20 +20,23 @@ async function fetchFirstDataFromApi() {
   
     const firstItem = firstResultsDataFromTheApi[0];
     const firstDataCard = `
-    <div class="relative hover-img max-h-98 overflow-hidden">
-                    <a href="${firstItem.url}">
-                      <img class="max-w-full w-full mx-auto h-auto" src="${firstItem.image_url}" alt="${firstItem.image_url}">
-                    </a>
-                    <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                      <a href="#">
-                        <h2 class="text-3xl font-bold capitalize  mb-3">${firstItem.title}</h2>
-                      </a>
-                      <p class=" hidden sm:inline-block text-white">${firstItem.title}</p>
-                      <div class="pt-2">
-                        <div class=""><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>${firstItem.news_site}</div>
-                      </div>
-                    </div>
-                  </div>
+    <a href="${firstItem.url}">
+    <div class="relative rounded-md hover-img h-96 overflow-hidden border hover:scale-y-110 transition duration-500 cursor-pointer">
+    <img class="max-w-full w-full mx-auto h-full object-cover " src="${firstItem.image_url}" alt="${firstItem.image_url}">
+  <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full h-full">
+    <div class="absolute bottom-5 left-5"> <!-- Position the div at the bottom-left -->
+        <h2 class="text-3xl font-bold capitalize mb-3 text-white">${firstItem.title}</h2>
+
+      <p class="text-white">${firstItem.summary}</p>
+      <div class="pt-2">
+      <div class="">
+        <div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>${firstItem.news_site}
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</a>
     `;
   
     FirstDataCardCLass.innerHTML = firstDataCard;
@@ -69,21 +72,17 @@ async function renderData() {
 
     apiDataResponseStartFrom2ndItem.forEach(item => {
         const cardTemplate = `
-        <article class="flex-shrink max-w-full w-full sm:w-1/2">
-        <div class="relative hover-img max-h-48 overflow-hidden">
-          <a href="${item.url}">
-            <img class="max-w-full w-full mx-auto h-auto" src="${item.image_url}" alt="${item.image_url}">
-          </a>
-          <div class="absolute px-4 pt-7 pb-4 bottom-0 w-full bg-gradient-cover">
-            <a href="${item.url}">
-              <h2 class="text-lg font-bold capitalize leading-tight  mb-1">${item.title}</h2>
-            </a>
-            <div class="pt-1">
-              <div class=""><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>${item.news_site}</div>
-            </div>
+        <div class="relative h-48 w-full  hover:scale-90 transition duration-500 cursor-pointer object-cover">
+        <img src="${item.image_url}" alt="${item.title}" class="absolute rounded-md h-full w-full object-cover ">
+        <div class="absolute bottom-0 left-0 p-2 rounded-md">
+          <div class="text-white">
+            <h2 class="text-sm font-bold">${item.title}</h2>
+            <div class="pt-2">
+                        <div class=""><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>${item.news_site}</div>
+                      </div>
           </div>
         </div>
-      </article>
+      </div>
         `;
         cardHTML += cardTemplate;
     });
