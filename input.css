@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.mansonry-grid {
+	columns: 12rem;
+}
+
+.blog-item {
+	break-inside: avoid;
+	aspect-ratio: 4 / 3;
+    margin-top: 0;
+}
